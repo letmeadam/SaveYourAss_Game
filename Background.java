@@ -1,10 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Background here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Adam Levasseur
  */
 public class Background extends Actor
 {
@@ -45,7 +42,6 @@ public class Background extends Actor
     
     private void updatePos()
     {
-        //System.out.println("Player Pos: " + player.globalPos[0] + "\t" + player.globalPos[1]);
         if (player.globalPos[0] <= getWorld().getWidth() / 2)
         {
             globalPos[0] = 0;
@@ -58,23 +54,19 @@ public class Background extends Actor
         {
             globalPos[0] = -player.globalPos[0] + getWorld().getWidth() / 2;
         }
-        //System.out.println("Player Pos: ( " + player.globalPos[0] + ", " + player.globalPos[1] + " )"); 
        
         if (player.globalPos[1] <= getWorld().getHeight() / 2)
         {
-            globalPos[1] = getHeight() / 2 - offset[1];//0; //plus offset[1]
+            globalPos[1] = getHeight() / 2 - offset[1];
         }
         else if(player.globalPos[1] >= getHeight() - getWorld().getHeight() / 2)
         {
-            globalPos[1] = 0;//-getImage().getHeight() + getWorld().getHeight();
+            globalPos[1] = 0;
         }
         else
         {
             globalPos[1] = -player.globalPos[1] + getHeight() - getWorld().getHeight() / 2;
         }
-        //
-        
-        //globalPos[1] = -player.globalPos[1] + getHeight() - getWorld().getHeight() / 2;
     }
     
     public int getX() {

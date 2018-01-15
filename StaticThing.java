@@ -2,11 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class Thing here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Adam Levasseur
  */
+
 public class StaticThing extends Actor
 {
     public int[] globalPos = new int[2];

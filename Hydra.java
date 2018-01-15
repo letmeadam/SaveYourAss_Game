@@ -1,6 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 
+/**
+ * @author ?
+ */
+
 public class Hydra extends StaticThing
 {
    private GreenfootImage[] neutral;
@@ -12,6 +16,7 @@ public class Hydra extends StaticThing
    private int currentFrame = 0;
    public  int head_off = 0; //5 means neutral /0 means dead
    private int slow = 0;
+
    public Hydra(int x, int y)
    {
       super(x, y);
@@ -27,13 +32,15 @@ public class Hydra extends StaticThing
    {
        super.act();
        slow++;
-       if (slow == 4) {
+       if (slow == 4)
+       {
            slow = 0;
            currentFrame = (currentFrame + 1) % 4; //all the arrays are length 4
        }
        
        
-       switch (head_off) {
+       switch (head_off)
+       {
           case 0:
              setImage(neutral[currentFrame]);
              break;
@@ -56,16 +63,14 @@ public class Hydra extends StaticThing
         
    }
     
-    public GreenfootImage[] initAnimation(String file_name, String file_type, int num_frames) {
+    public GreenfootImage[] initAnimation(String file_name, String file_type, int num_frames)
+    {
       GreenfootImage[] temp = new GreenfootImage[num_frames];
       Random random = new Random();
       int scale_factor = 2;
       
-      for (int i = 0; i < num_frames; i++) {
+      for (int i = 0; i < num_frames; i++)
          temp[i] = new GreenfootImage(file_name + i + file_type);
-         //temp[i].scale(temp[i].getWidth() / scale_factor, temp[i].getHeight() / scale_factor);
-         //temp[i].mirrorHorizontally();
-      }
       
       currentFrame = random.nextInt(num_frames - 1);
       setImage(temp[currentFrame]);

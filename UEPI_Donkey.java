@@ -14,6 +14,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Lauren Kirk
  * @version 5.1.2017 V1
  */
+
 public class UEPI_Donkey extends StaticThing
 {
     private GreenfootImage[] standing;

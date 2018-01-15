@@ -30,6 +30,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Subsequent versions remain undocumented due to lack of organization and sanity of developers
  *  - Adam
  */
+
 public class SpeechBubble extends Actor
 {    
     // Note, FTL = "Frames to Live", number of frames that a dialogue box is be displayed

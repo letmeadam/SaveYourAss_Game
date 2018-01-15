@@ -1,10 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Carrot here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lauren Kirk, Adam Levasseur
  */
 public class Carrot extends StaticThing
 {

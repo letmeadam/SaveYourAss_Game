@@ -4,8 +4,7 @@ import java.util.ArrayList;
 /**
  * Write a description of class Fireball here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lauren Kirk, Adam Levasseur
  */
 public class Fireball extends MovingThing
 {
@@ -15,20 +14,9 @@ public class Fireball extends MovingThing
     
     public boolean rightward = true;
     
-    public Fireball (int x, int y, boolean goingRight) { //int dx, int dy) {
+    public Fireball (int x, int y, boolean goingRight) {
         super(x, y);
         rightward = goingRight;
-        
-        //float max = Math.abs((float) dx);// / (float) dy);
-        //if (Math.abs(dy) > Math.abs(dx))
-        //    max = Math.abs((float) dy);
-            
-        //max = 1.0f / max;
-        //if (Math.abs(dx) > MAX_SPEED)
-        //    dir[0] = (dx / Math.abs(dx)) * (int) ((float) MAX_SPEED * (float) Math.abs(dx) * max);
-        //if (Math.abs(dy) > MAX_SPEED)
-        //    dir[1] = (dy / Math.abs(dy)) * (int) ((float) MAX_SPEED * (float) Math.abs(dy) * max);
-        
     }
    
     public void act() 

@@ -4,11 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lauren Kirk, Adam Levasseur
  */
+
 public class UnderWorldPartII extends World
 {   
     private static final int FRAME_RATE = 80;
@@ -300,8 +298,6 @@ public class UnderWorldPartII extends World
           gainHeart.play();
      
           lives.addLife(this);
-          
-          //System.out.println("Gained Health.");
        }
        
        lives.act();
@@ -322,8 +318,6 @@ public class UnderWorldPartII extends World
               p2_player.getImage().setTransparency(100);
               p2_player.jump();
               lives.loseLife();    
-                    
-              //System.out.println("Lost Life.");
            }
            else if (!Greenfoot.isKeyDown("Space")) {
               ouch.setVolume(60);
@@ -332,19 +326,15 @@ public class UnderWorldPartII extends World
               p2_player.getImage().setTransparency(100);
               p2_player.jump();
               lives.loseLife();    
-                    
-              //System.out.println("Lost Life.");
            }
        }
        
        if (p2_player.isTouching(SpiderEnemy.class) && Greenfoot.isKeyDown("Space")) {
-          //System.out.println("Killing Spider");
           badLives.loseLife();
        }
     }
 
     public void restart() {
-          //System.out.println("Test 1");
           lives.addXLives(3, this); 
           
           p2_player.globalPos[0] = 50;

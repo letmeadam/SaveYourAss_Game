@@ -2,8 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * 
+ * @author Lauren Kirk
  */
+
 public class UnderWorldPartI extends World
 {
     private static final int FRAME_RATE = 40;
@@ -58,9 +59,6 @@ public class UnderWorldPartI extends World
        emoji.scale(bubbleSizeX, bubbleSizeY);
        player.initialize();
        player.dialogue.setBubble(emoji);
-       
-       //CrappyInstructions crap = new CrappyInstructions();
-       //addObject(crap, 600, 300);
     }
     
     // Cave Phase Act
@@ -93,13 +91,11 @@ public class UnderWorldPartI extends World
              checkHurt();
 
              if (sword.takeSword()) {
-                //System.out.println("Sword Taken. Distressed Donkey Sound? Donkey Kidnapped.");
                 player.setSword(true);
                 player.initialize();
                 player.say(sword_img);
                 
                 ///* Donkey Kidnapped */
-                //removeObject(donkey);
                 donkey.movePos(600, 0);
              }
 
@@ -107,7 +103,6 @@ public class UnderWorldPartI extends World
           }
           else {
              if (timeDead == 0) {
-                //System.out.println("Is dead. Start Over");
                 timeDead = DEAD_LONG_TIME;
                 player.setRotation(0);
                 player.setAliveStatus(true);
@@ -367,10 +362,6 @@ public class UnderWorldPartI extends World
        
        skull3 = new Skull(blockDim * 45 + halfBlockDim, blockDim * 7, blockDim * 1, blockDim * 1);
        addObject(skull3, skull3.globalPos[0], skull3.globalPos[1]);
-       
-       //skull4 = new Skull(blockDim * 46, getHeight() - halfBlockDim, 0, 0);
-       //addObject(skull4, skull4.globalPos[0], skull4.globalPos[1]);
-
     }
     
     public void addDonkey(int blockDim, int halfBlockDim, int bgWidth) {
@@ -409,8 +400,6 @@ public class UnderWorldPartI extends World
           gainHeart.play();
           
           lives.addLife(this);
-          
-          //System.out.println("Gained Health.");
        }
        
        lives.act();
@@ -423,16 +412,12 @@ public class UnderWorldPartI extends World
        
        if (player.isTouching(Skull.class)) {
            if (!player.isBlocking() || !Greenfoot.isKeyDown("space") || !sword.isSwordInHand()) {
-              //System.out.println("Bool: " + !sword.isSwordInHand());
-               
               ouch.setVolume(60);
               ouch.play();
           
               player.getImage().setTransparency(100);
               player.jump();
               lives.loseLife();    
-                    
-              //System.out.println("Lost Life by Skull");
            }
        }
       

@@ -3,7 +3,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
   * HeartControls Purpose: Add's player's lives to screen. Will need to be modified to implement
   * life-points to give "lives" to other actors. (To do so, look into updating the xHearts Offset)
+  * @author Lauren Kirk
   */
+
 public class HeartController extends Actor
 {
     private static final String DEFAULT_HEART = "CarrotHearts.png"; 
@@ -65,7 +67,6 @@ public class HeartController extends Actor
     //Add Heart to Existing Lives (Heart).
     public void addLife(World world) {
        if (heart_idx < MAXIMUM_NUM_LIVES) {
-          //System.out.println("Adding Life at Idx: " + heart_idx);
           lives[heart_idx] = new HeartLife(heartName, 4);
           
           if (isRightJustified) {
@@ -82,46 +83,40 @@ public class HeartController extends Actor
           heart_idx++;
        }
        else {
-          //System.out.println("\nAlready at max health!");
           System.out.println();
        }
     }
     
     //Remove Heart From Existing Lives (Hearts).
-    public void loseLife() {
-       //System.out.println("Here");
-       if(heart_idx > 0) {
-           //System.out.println("This");
-         if (lostLifeGracePeriod == GRACE_PERIOD_TIMER) {
+    public void loseLife()
+    {
+       if(heart_idx > 0)
+       {
+          if (lostLifeGracePeriod == GRACE_PERIOD_TIMER)
+          {
              heart_idx--;
-          
-             //Line of Code Not Working...
-             //getWorld().removeObject(lives[heart_idx]);
           
              //Shitty Hack to "Remove" Heart from Screen
              lives[heart_idx].getImage().setTransparency(0);
              
-             //System.out.println("Removing Life at Idx: " + heart_idx);
-             
              lostLifeGracePeriod--;
-        }
-       }
-       else {
-          //System.out.println("\nYou died! Insert Death Scene...");
+          }
        }
     }
     
-    public void addXLives(int x, World world) {
-       for (int i = 0; i < x; i++) {
+    public void addXLives(int x, World world)
+    {
+       for (int i = 0; i < x; i++)
            addLife(world);    
-       }
     }
     
-    public boolean isAlive() {
+    public boolean isAlive()
+    {
        return heart_idx > 0;    
     }
     
-    public int numCurrentLives() {
+    public int numCurrentLives()
+    {
        return heart_idx + 1;
     }
 }

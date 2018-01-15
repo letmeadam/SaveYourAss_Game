@@ -2,10 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class Character here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Adam Levasseur, Lauren Kirk
  */
 public class Character extends StaticThing
 {

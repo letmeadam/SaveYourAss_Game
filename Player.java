@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Current Bugs in Player: 
- *    (1) Some images not transparent.
+ * @author Adam Levasseur, Lauren Kirk
  */
+
 public class Player extends Character
 {
    private static final int IDLE_WAKE_STATE = 0;
@@ -29,8 +29,7 @@ public class Player extends Character
    
    private GreenfootImage[] shield;
    private int currentShield = 0;
-   
-   //public boolean facingRight = true;  // moved to Character class  
+
 
    private int state = IDLE_WAKE_STATE;
    private int inactive_frames = 0;
@@ -74,21 +73,22 @@ public class Player extends Character
    public void act() 
    {
        blocking = false; // reset blocking state
-       updatePos();     //update the position
-       setPos();        //set appropriate position
+       updatePos();      //update the position
+       setPos();         //set appropriate position
        updateDialogue(getImage().getWidth() / 2, -getImage().getHeight() / 2, facingRight); //update dialogue
-       //checkDialogue(); //set appropriate dialogue
    }
    
-   public void setCollisionBorders(GreenfootImage img) {
+   public void setCollisionBorders(GreenfootImage img)
+   {
       //Defining Bounding Box Around Character (For Dimensions)
       bBox[0] = -img.getWidth()  / 2 - 2; //Left
       bBox[1] =  img.getWidth()  / 2 - 2; //Right
-      bBox[2] = -img.getHeight() / 2; //Top
-      bBox[3] =  img.getHeight() / 2; //Bottom
+      bBox[2] = -img.getHeight() / 2;     //Top
+      bBox[3] =  img.getHeight() / 2;     //Bottom
    }
    
-   public GreenfootImage[] initAnimationState(String file_name, String file_type, int num_frames) {
+   public GreenfootImage[] initAnimationState(String file_name, String file_type, int num_frames)
+   {
       GreenfootImage[] temp = new GreenfootImage[num_frames];
       int scale_factor = 4;
       
@@ -103,10 +103,10 @@ public class Player extends Character
       return temp;
    }
    
-   public void flipAnimation(GreenfootImage[] array, int num_frames) {
-      for (int i = 0; i < num_frames; i++) {
+   public void flipAnimation(GreenfootImage[] array, int num_frames)
+   {
+      for (int i = 0; i < num_frames; i++)
          array[i].mirrorHorizontally();      
-      }
       
       //Note, 0 is the defaulted "starting" image
       setImage(array[0]);
@@ -116,10 +116,8 @@ public class Player extends Character
    {
        checkFalling();
        
-       if (isAlive) {   
+       if (isAlive)
            checkControls();
-       }
-       //checkControls();
        
        movePos(getXSpeed(), getYSpeed());
    }
@@ -129,9 +127,7 @@ public class Player extends Character
        boolean keyPressed = false;
        
        if (getBackground() == null)
-       {
            return;
-       }
              
        if ((Greenfoot.isKeyDown("right") && cutSceneMode == false) || (cutSceneMode == true && cutSceneMove[1] == true))
        {
@@ -166,30 +162,20 @@ public class Player extends Character
                facingRight = false;
            }
        }
-       else if (Greenfoot.isKeyDown("Space") && hasSword) {
-          //Add Dialogue
+       else if (Greenfoot.isKeyDown("Space") && hasSword)
           keyPressed = true;
-       }
-       else if (Greenfoot.isKeyDown("down") && hasShield) {
-          //Add Dialogue
+       else if (Greenfoot.isKeyDown("down") && hasShield)
           keyPressed = true;
-       }
        else
-       {
            setXSpeed(0);
-       }
         
        if ((Greenfoot.isKeyDown("up") && cutSceneMode == false) || (cutSceneMode == true && cutSceneMove[2] == true) || isTouching(FireHitBox.class))
        {
            if (isTouching(FireHitBox.class)) {
-              //System.out.println("Playe: TODO: Add Dialogue Saying: 'Ouch! Touched Fire!");;    
-            
-              if (facingRight) {
+              if (facingRight)
                  movePos(-20, 0);
-              }
-              else {
+              else
                  movePos(20, 0);
-              }
            }
            jump();
            keyPressed = true;
@@ -227,9 +213,8 @@ public class Player extends Character
          }
        }
        
-       if (keyPressed && snoring.isPlaying()){
+       if (keyPressed && snoring.isPlaying())
           snoring.pause();
-       }
     }
     
     public void animateWalking() {
@@ -274,34 +259,20 @@ public class Player extends Character
         int x, y;
         
         if (getBackground() == null || globalPos[0] <= getWorld().getWidth() / 2)
-        {
             x = globalPos[0];
-        }
         else if (globalPos[0] >= getBackground().getWidth() - getWorld().getWidth() / 2)
-        {
             x = globalPos[0] - getBackground().getWidth() + getWorld().getWidth();
-        }
         else
-        {
             x = getWorld().getWidth() / 2;
-        }
             
         if (getBackground() == null || globalPos[1] <= getWorld().getHeight() / 2)
-        {
             y = globalPos[1];
-        }
         else if (globalPos[1] >= getBackground().getHeight() - getWorld().getHeight() / 2)
-        {
             y = globalPos[1] - getBackground().getHeight() + getWorld().getHeight();
-        }
         else
-        {
             y = getWorld().getHeight() / 2;
-        }
         
         setLocation(x, y);
-        //updateDialogue(getImage().getWidth() / 2, -getImage().getHeight() / 2, facingRight);
-        //say.updateLocation(x + getImage().getWidth() / 2, y - getImage().getHeight() / 2);
     }
     
     public int getSpeed()
@@ -346,7 +317,6 @@ public class Player extends Character
     //Override Protected Declaration
     public <A> java.util.List<A> getObjectsInRange(int radius, Donkey donkey) {
         return getObjectsInRange(radius, donkey);
-        //super(radius, cls);
     }
     
     //Override ProtectedDeclaration
@@ -364,9 +334,8 @@ public class Player extends Character
       for (int i = 0; i < 6; i++) {
          walking[i].setTransparency(transparency);
          
-         if (i < 2) {
+         if (i < 2)
             idleWake[i].setTransparency(transparency);
-         }
       }     
     }
     
@@ -374,20 +343,11 @@ public class Player extends Character
     public void killThing() {
        if(Greenfoot.isKeyDown("Space") && hasSword) {
           if (hasSword) { //a for attack!
-             //System.out.println("Kill thing.");
-
-             /*if(isTouching(Fire.class)) {
-                removeTouching(Fire.class);    
-             }*/
-          
-             if(isTouching(Skull.class)) {
+             if(isTouching(Skull.class))
                 removeTouching(Skull.class);
-             }
              
-             if (isTouching(SpiderWebs.class)) {
-                //System.out.println("Touching SpiderWeb.");
+             if (isTouching(SpiderWebs.class))
                 removeTouching(SpiderWebs.class);    
-             }
           }
        }
     }

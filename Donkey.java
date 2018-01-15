@@ -2,10 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 
 /**
- * BUGS:
- *    (1) Moves with the actor (is on a fixed position).
- *        Will move under "Moving Thing" once the bug 
- *        (unable to place item) there gets fixed.
+ * @author Adam Levaseur, Lauren Kirk
  */
 public class Donkey extends Character
 {

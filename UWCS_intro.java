@@ -3,8 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class intro here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Matt Moren
  */
 public class UWCS_intro extends Actor
 {

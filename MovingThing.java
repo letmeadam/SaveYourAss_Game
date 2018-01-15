@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * BUGS:
- *    (1) For some reason, moving things can't be placed in this class
+ * @author Adam Levasseur
  */
+
 public class MovingThing extends StaticThing
 {
     public MovingThing(int x, int y)

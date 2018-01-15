@@ -2,9 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 
 /**
- * BUGS:
- *    (1) None Known.
+ * @author Adam Levasseur, Lauren Kirk
  */
+
 public class Skull extends MovingThing
 {
    private static final int STATIONARY_IMAGE_NUM = 0;

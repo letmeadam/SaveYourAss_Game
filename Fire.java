@@ -2,8 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 
 /**
- * Fixes Scaling Issue
+ * @author Lauren Kirk, Adam Levasseur
  */
+
 public class Fire extends StaticThing
 {
     private static final int DEFAULT_ERROR = 40;

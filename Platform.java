@@ -1,11 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Platform here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Adam Levasseur
  */
+
 public class Platform extends Obstacle
 {   
     public Platform(int x, int y)

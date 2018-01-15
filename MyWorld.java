@@ -3,11 +3,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Adam Levasseur, Lauren Kirk, Matt Moren
  */
+
 public class MyWorld extends World
 {
     private static final int FRAME_RATE = 40;
@@ -17,7 +15,7 @@ public class MyWorld extends World
     private static final GreenfootSound ouch    = new GreenfootSound("Ouch.wav");
     private static final GreenfootSound youDead = new GreenfootSound("YouDead.wav");
     
-    private boolean cutSceneMode = false;//true;
+    private boolean cutSceneMode = false;
     private int cutSceneNumber   = 0;
     private int cutSceneFrame    = 0;
     
@@ -102,7 +100,6 @@ public class MyWorld extends World
         addObject(siren2, bg.getWidth() - 1100, getHeight() * 3 / 4 + 20);
         
         /** Blacksmith **/
-        //bS_image.scale(bS_image.getWidth() * 2, bS_image.getHeight() * 2);
         blackSmith = new Character(-140, getHeight() - 200);
         addObject(blackSmith, -100, getHeight() / 2);
         
@@ -152,8 +149,6 @@ public class MyWorld extends World
         /** Portal **/
         portal = new StaticThing(-100, -500);//bg.getWidth() - 100, 550);
         GreenfootImage portal_img = new GreenfootImage("whirly.png");
-        //portal_img.scale(portal_img.getWidth() / 2, portal_img.getHeight() / 2);
-        //portal_img.rotate(90);
         portal.setImage(portal_img);
         addObject(portal, -100, -500);
         
@@ -168,9 +163,7 @@ public class MyWorld extends World
         /* Connect all StaticThings to Background */
         ArrayList<StaticThing> objs = new ArrayList<StaticThing>(getObjects(StaticThing.class));
         for (int i = 0; i < objs.size(); i++)
-        {
             objs.get(i).setBackground(bg);
-        }
         
         /* Set all Characters' bubbles to generic speech bubble base */
         ArrayList<Character> chars = new ArrayList<Character>(getObjects(Character.class));
@@ -187,13 +180,15 @@ public class MyWorld extends World
         setPaintOrder(SpeechBubble.class, Donkey.class, Player.class, Character.class, StaticThing.class);
     }
     
-    public void checkHurt() {
-       if (player.getImage().getTransparency() == 100) {
+    public void checkHurt()
+    {
+       if (player.getImage().getTransparency() == 100)
           player.getImage().setTransparency(255);
-       }
        
-       if (hydra.head_off < 5 && player.globalPos[0] > 4400) {
-           if (!Greenfoot.isKeyDown("down") || !player.hasShield()) {
+       if (hydra.head_off < 5 && player.globalPos[0] > 4400)
+       {
+           if (!Greenfoot.isKeyDown("down") || !player.hasShield())
+           {
                ouch.setVolume(60);
                ouch.play();
           
@@ -204,7 +199,8 @@ public class MyWorld extends World
        }
     }
     
-    public void restart() {
+    public void restart()
+    {
           lives.addLife(this);
           lives.addLife(this);
           lives.addLife(this);
@@ -217,30 +213,35 @@ public class MyWorld extends World
     
     public void act()
     {   
-        // CHEAT CODES: LEVEL SELECT
+        // DEBUG CHEAT CODES: LEVEL SELECT
         //if (Greenfoot.isKeyDown("0"))
         //    Greenfoot.setWorld(new UnderWorldCutScene());
         //if (Greenfoot.isKeyDown("1"))
         //    Greenfoot.setWorld(new UnderWorldPartI());
         //if (Greenfoot.isKeyDown("2"))
         //    Greenfoot.setWorld(new UnderWorldPartII());
-        if (lives == null) {
+        if (lives == null)
+        {
             lives = new HeartController();
             lives.addXLives(3, this);
         }
-        if (lives.isAlive()) {
+        if (lives.isAlive())
+        {
             lives.act();
             checkHurt();
         }
-        else {
+        else
+        {
              if (timeDead == 0) {
-                //System.out.println("Is dead. Start Over");
                 timeDead = DEAD_LONG_TIME;
                 player.setRotation(0);
                 player.setAliveStatus(true);
                 restart();
-             } else {
-                if (!playDead) {
+             }
+             else
+             {
+                if (!playDead)
+                {
                    youDead.play();
                    playDead = true;
                 }
@@ -256,9 +257,7 @@ public class MyWorld extends World
             if (fbs.get(i).isHitting(player) == true)
             {
                 if (player.isBlocking() == true)
-                {
                     fbs.get(i).rightward = true;
-                }
                 else
                 {
                     ouch.setVolume(60);
@@ -291,12 +290,9 @@ public class MyWorld extends World
         {
             ArrayList<Character> chars = new ArrayList<Character>(getObjects(Character.class));
             for (int i = 0; i < chars.size(); i++)
-            {
                 chars.get(i).setCutSceneMode(true);
-            }
             
             bg.setCutSceneMode(true);
-            
             executeCutScene();
         }
         else
@@ -308,10 +304,6 @@ public class MyWorld extends World
             }
             
             bg.setCutSceneMode(false);
-            
-            //GreenfootImage temp = whirl.getImage();
-            //temp.rotate(10);
-            //whirl.setImage(temp);
             
             if (cutSceneNumber == 0)
                 nonInvasiveCutScene();
@@ -339,7 +331,6 @@ public class MyWorld extends World
                             chest.setImage(chest_img);
                             player.giveShield();
                             player.say(dialogues.get("down"));
-                            //cutSceneNumber++;
                         }
                     }
                 }
@@ -367,21 +358,21 @@ public class MyWorld extends World
         }
     } 
     
-    public GreenfootSound getIntro() {
+    public GreenfootSound getIntro()
+    {
        return intro;    
     }
     
-    public void pauseCurrentTheme() {
-       if (intro.isPlaying()) {
+    public void pauseCurrentTheme()
+    {
+       if (intro.isPlaying())
           intro.pause();   
-       }
     }
     
-    public void resumeCurrentTheme() {
-        if (!(intro.isPlaying())) {
-           intro.play();    
-        }
-        
+    public void resumeCurrentTheme()
+    {
+        if (!(intro.isPlaying()))
+           intro.play();
     }
     
     public void nonInvasiveCutScene()
@@ -439,7 +430,6 @@ public class MyWorld extends World
                     donkey.say(dialogues.get("heart eyes"));
                     player.say(dialogues.get("smiling with smiling eyes"));
                     carrots[0].movePos(0, -1000);
-                    //wind?
                     cutSceneFrame++;
                 }
             }
@@ -467,8 +457,6 @@ public class MyWorld extends World
             {
                 blackSmith.setPos(150, getHeight() - 200);
                 cutSceneMode = true;
-                //cutSceneNumber++;
-                    //1755
                 cutSceneFrame = 0;
             }
         }
@@ -478,7 +466,7 @@ public class MyWorld extends World
     {
         if (cutSceneNumber == 0)
         {
-            if (player.globalPos[0] < 1755) //Walk right to center of lawn
+            if (player.globalPos[0] < 1755) // Walk right to center of lawn
             {
                 player.say(dialogues.get("worried"));
                 player.csRight();
@@ -493,7 +481,7 @@ public class MyWorld extends World
         {
             if (cutSceneFrame == 1)
                 player.say(dialogues.get("worried"));
-            else if (cutSceneFrame < 20) // wait for Worried dialogue to pass
+            else if (cutSceneFrame < 20) // Wait for Worried dialogue to pass
                 player.csStill();
             else if (cutSceneFrame == 20)
                 player.say(dialogues.get("donkey"));
@@ -530,10 +518,6 @@ public class MyWorld extends World
                 player.csStill();
             else
             {
-                //GreenfootImage temp = whirl.getImage();
-                //temp.setTransparency(255);
-                //whirl.setImage(temp);
-                
                 cutSceneFrame = 0;
                 cutSceneMode = false;
                 cutSceneNumber++;
@@ -545,9 +529,7 @@ public class MyWorld extends World
             int step = 30;
             
             if (cutSceneFrame < ref)
-            {
                 player.csLeft();
-            }
             else if (cutSceneFrame == ref)
                 blackSmith.say(dialogues.get("smiling with smiling eyes"));
             else if (cutSceneFrame <  ref + step * 1)
@@ -644,7 +626,6 @@ public class MyWorld extends World
             else if (cutSceneFrame <  ref + step * 23)
                 player.csRight();
                 
-                
             else
             {
                 cutSceneFrame = 0;
@@ -665,7 +646,6 @@ public class MyWorld extends World
             else
             {
                 cutSceneFrame = 0;
-                //cutSceneMode = false;
                 cutSceneNumber++;
             }
         }
@@ -745,8 +725,8 @@ public class MyWorld extends World
                                      bg.getHeight() - getHeight() / 4 + 1015);
         carrots[1] = new StaticThing(getWidth() + 110, 
                                      bg.getHeight() - getHeight() / 4 - 3);
-        carrots[2] = new StaticThing(getWidth() + 100,//- 125, 
-                                     bg.getHeight() - getHeight() / 4 - 12);//+ 15);
+        carrots[2] = new StaticThing(getWidth() + 100,
+                                     bg.getHeight() - getHeight() / 4 - 12);
                                      
         carrots[0].setImage(c_img);
         carrots[1].setImage(c_img);
@@ -786,17 +766,17 @@ public class MyWorld extends World
         /** Image Setup **/
         /* img_ground (long) */
         GreenfootImage img_ground = platforms[0].getImage();
-        img_ground.setTransparency(0); //temp, should be 0
+        img_ground.setTransparency(0);
         img_ground.scale(1200, img_ground.getHeight());
         
         /* img_medium */
         GreenfootImage img_medium = platforms[3].getImage();
-        img_medium.setTransparency(0); //temp, should be 0
+        img_medium.setTransparency(0);
         img_medium.scale(200, img_medium.getHeight());
         
         /* img_wall */
         GreenfootImage img_wall = platforms[5].getImage();
-        img_wall.setTransparency(0); //temp, should be 0
+        img_wall.setTransparency(0);
         img_wall.scale(img_wall.getWidth(), 300);
         
         /** Set each Platform's image appropriately **/
@@ -808,7 +788,7 @@ public class MyWorld extends World
         platforms[5].setImage(img_wall);   //blacksmith wall
         platforms[6].setImage(img_wall);   //boat wall
         platforms[7].setImage(img_ground); //ground
-        platforms[8].setImage(img_wall); //ground
+        platforms[8].setImage(img_wall);   //ground
         
         /** Add Platforms to World **/
         for (int i = 0; i < numPlatforms; i++)
@@ -1006,8 +986,6 @@ public class MyWorld extends World
     public void waitOnKey(String key)
     {
         while (Greenfoot.isKeyDown(key) == false)
-        {
             Greenfoot.delay(1);
-        }
     }
 }

@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Lauren Kirk
  * @version 4.30.2017 V1
  */
+
 public class HeartLife extends Actor
 {    
     private static final int SCALING_FACTOR = 4;
@@ -15,12 +16,14 @@ public class HeartLife extends Actor
     private GreenfootImage heart = null;
     
     //Protagonist's Heart (Default)
-    public HeartLife() {
+    public HeartLife()
+    {
        this(DEFAULT_HEART, SCALING_FACTOR);
     }
     
     //Specified Heart (E.G. For Non-Protagonist Actors)
-    public HeartLife(String filename, int scaling_factor) {
+    public HeartLife(String filename, int scaling_factor)
+    {
        heart = new GreenfootImage(filename);
        
        heart.scale(heart.getWidth() / scaling_factor,

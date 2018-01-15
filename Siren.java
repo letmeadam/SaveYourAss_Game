@@ -2,17 +2,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 
 /**
- * Write a description of class Siren here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lauren Kirk, Matt Moren
  */
+
 public class Siren extends StaticThing
 {
-    /**
-     * Act - do whatever the Siren wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private GreenfootImage[] anim;
     private int currentFrame = 0;
     
@@ -37,8 +31,6 @@ public class Siren extends StaticThing
       
       for (int i = 0; i < num_frames; i++) {
          temp[i] = new GreenfootImage(file_name + i + file_type);
-         //temp[i].scale(temp[i].getWidth() / scale_factor, temp[i].getHeight() / scale_factor);
-         //temp[i].mirrorHorizontally();
       }
       
       currentFrame = random.nextInt(num_frames - 1);

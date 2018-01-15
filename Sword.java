@@ -1,11 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Sword here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lauren Kirk, Adam Levasseur
  */
+
 public class Sword extends StaticThing
 {
     private GreenfootImage swordStone = new GreenfootImage("excalibur.png");
@@ -38,8 +36,6 @@ public class Sword extends StaticThing
           swordInHand = true;
           
           setImage(noSwordStone);
-          
-          //System.out.println("Insert Dialogue: You now have the sword.");
           
           return true;
        }

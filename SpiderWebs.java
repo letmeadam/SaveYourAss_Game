@@ -1,11 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SpiderWebs here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lauren Kirk
  */
+
 public class SpiderWebs extends StaticThing
 {
     public SpiderWebs(int x, int y) {
